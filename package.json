@@ -1,0 +1,22 @@
+{
+  "name": "arquitectura-crm",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0 <25.0.0"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build": "npm --workspace client run build",
+    "dev": "concurrently \"npm --workspace server run dev\" \"npm --workspace client run dev\"",
+    "start": "npm run db:init && npm --workspace server start",
+    "db:init": "npm --workspace server run db:init",
+    "db:reset": "npm --workspace server run db:reset"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
