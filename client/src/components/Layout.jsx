@@ -1,5 +1,6 @@
 import React from "react";
 import { BarChart3, BriefcaseBusiness, CheckSquare, KanbanSquare, Users } from "lucide-react";
+import logoActia from "../assets/logo-actia.png";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: BarChart3 },
@@ -14,11 +15,7 @@ export default function Layout({ currentView, onViewChange, children }) {
     <div className="app-shell">
       <aside className="sidebar">
         <div className="brand">
-          <span className="brand-mark">EA</span>
-          <div>
-            <strong>Estudio CRM</strong>
-            <span>Arquitectura</span>
-          </div>
+          <img className="brand-logo" src={logoActia} alt="ACTIA" />
         </div>
         <nav className="nav-list" aria-label="Navegación principal">
           {navItems.map((item) => {
