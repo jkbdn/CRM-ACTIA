@@ -116,7 +116,12 @@ Ese modo sirve para demo, revisión y pruebas rápidas:
 - Datos: se guardan solo en el navegador de cada persona
 - No hay base de datos compartida ni servidor API
 
-El workflow `.github/workflows/deploy-pages.yml` compila y publica `client/dist` automáticamente en GitHub Pages cada vez que se hace push a `main`.
+Este repositorio incluye dos caminos compatibles:
+
+- Si GitHub Pages está configurado con origen `Deploy from a branch` y carpeta raíz, la app se sirve desde `index.html` y `assets/` en la raíz del repo.
+- Si GitHub Pages está configurado con origen `GitHub Actions`, el workflow `.github/workflows/deploy-pages.yml` compila y publica `client/dist` automáticamente.
+
+Para regenerar la versión estática manualmente, ejecuta `npm run build:pages` y copia el contenido de `client/dist` a la raíz si mantienes Pages en modo rama/carpeta raíz.
 
 Para datos compartidos reales, usa Render u otro servicio con backend y disco persistente.
 
