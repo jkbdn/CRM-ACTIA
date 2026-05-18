@@ -141,7 +141,7 @@ export default function Opportunities({ meta, notify }) {
           <p>Propuestas, fechas límite, honorarios y responsables.</p>
         </div>
         <div className="actions">
-          <a className="button secondary" href={exportUrl("opportunities")}>
+          <a className="button secondary" href={exportUrl("opportunities")} download="oportunidades.csv">
             <Download size={16} />
             CSV
           </a>

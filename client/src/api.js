@@ -1,4 +1,7 @@
+import { localApi, localExportUrl } from "./localApi.js";
+
 const API_BASE = import.meta.env.VITE_API_URL || "";
+const USE_STATIC_CRM = import.meta.env.VITE_STATIC_CRM === "true";
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE}${path}`, {
@@ -35,7 +38,7 @@ function withQuery(path, filters = {}) {
   return query ? `${path}?${query}` : path;
 }
 
-export const api = {
+const remoteApi = {
   meta: () => request("/api/meta"),
   dashboard: () => request("/api/dashboard"),
   contacts: {
@@ -64,9 +67,12 @@ export const api = {
       method: "POST",
       headers: { "Content-Type": "text/csv; charset=utf-8" },
       body: text
-    })
+  })
 };
 
+export const api = USE_STATIC_CRM ? localApi : remoteApi;
+
 export function exportUrl(type) {
+  if (USE_STATIC_CRM) return localExportUrl(type);
   return `${API_BASE}/api/export/${type}`;
 }

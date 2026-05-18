@@ -103,7 +103,7 @@ export default function Contacts({ meta, notify }) {
           <p>Clientes, promotores, instituciones y colaboradores.</p>
         </div>
         <div className="actions">
-          <a className="button secondary" href={exportUrl("contacts")}>
+          <a className="button secondary" href={exportUrl("contacts")} download="contactos.csv">
             <Download size={16} />
             CSV
           </a>

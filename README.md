@@ -105,6 +105,21 @@ SQLite necesita almacenamiento persistente en nube. Si despliegas sin disco pers
 
 Limitación importante: SQLite con disco persistente es adecuado para este MVP interno con una sola instancia. Para varios usuarios concurrentes, escalado horizontal o producción seria, conviene migrar la base de datos a PostgreSQL.
 
+## Publicación en GitHub Pages
+
+GitHub Pages no puede ejecutar el backend Node/Express ni SQLite. Para que la URL pública del repositorio sea usable, el frontend incluye un modo estático que guarda los datos en `localStorage` del navegador.
+
+Ese modo sirve para demo, revisión y pruebas rápidas:
+
+- URL esperada: `https://jkbdn.github.io/CRM-ACTIA/`
+- Build estático: `npm run build:pages`
+- Datos: se guardan solo en el navegador de cada persona
+- No hay base de datos compartida ni servidor API
+
+El workflow `.github/workflows/deploy-pages.yml` compila y publica `client/dist` automáticamente en GitHub Pages cada vez que se hace push a `main`.
+
+Para datos compartidos reales, usa Render u otro servicio con backend y disco persistente.
+
 ## Datos de ejemplo
 
 El seed inicial incluye:

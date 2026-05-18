@@ -125,7 +125,7 @@ export default function Tasks({ meta, notify }) {
           <p>Seguimiento comercial asociado a contactos y oportunidades.</p>
         </div>
         <div className="actions">
-          <a className="button secondary" href={exportUrl("tasks")}>
+          <a className="button secondary" href={exportUrl("tasks")} download="tareas.csv">
             <Download size={16} />
             CSV
           </a>
